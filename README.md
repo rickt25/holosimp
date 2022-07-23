@@ -1,6 +1,8 @@
 # Holosimp
 Simple project made with [@elvinvalentino](https://github.com/elvinvalentino) while sipping some tea 🧋.
 
+Project demo : https://holosimp.vercel.app/
+
 ![](./public/app-preview.png)
 
 Website to see the currently streaming VTuber especially from Hololive.
