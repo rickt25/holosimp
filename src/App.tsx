@@ -14,10 +14,14 @@ function App() {
   }, []);
 
   return (
-    <main className="box-border bg-[#0d1524] p-10 text-gray-300">
+    <main className="box-border bg-[#0d1524] p-10 text-gray-300 h-screen">
       <div>
-        <VideoWrapper title="Live Now" videos={videos.filter(x => x.status == "live")} />
-        <VideoWrapper title="Upcoming" videos={videos.filter(x => x.status == "upcoming")} />
+        {videos.length > 0 && (
+          <>
+            <VideoWrapper title="Live Now" videos={videos.filter(x => x.status == "live")} />
+            <VideoWrapper title="Upcoming" videos={videos.filter(x => x.status == "upcoming")} />
+          </>
+        )}
       </div>
     </main>
   );
