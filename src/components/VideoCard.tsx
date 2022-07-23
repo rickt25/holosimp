@@ -24,7 +24,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
 
   return (
     <>
-      <div className="w-1/4 p-4">
+      <div className="w-1/4 p-4 transition hover:bg-white hover:text-black">
         <a href={`https://youtu.be/${video.videoId}`} target="_blank">
           <div className="relative">
             <img
