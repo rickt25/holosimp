@@ -31,11 +31,9 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
               src={`https://i.ytimg.com/vi/${video.videoId}/hq720.jpg`}
               alt=""
             />
-            {video.actualStart && (
-              <div className="absolute right-1 bottom-1 text-xs bg-white p-1">
-                {moment(time).format("HH:mm:ss")}
-              </div>
-            )}
+            <div className="absolute right-1 bottom-1 text-sm bg-black text-white px-1 opacity-80 rounded">
+              {video.actualStart ? moment(time).format("HH:mm:ss") : "UPCOMING"}
+            </div>
           </div>
           <p>{video.title}</p>
         </a>
