@@ -24,12 +24,13 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
 
   return (
     <>
-      <div className="w-1/4 p-4 transition hover:bg-white hover:text-black">
+      <div className="w-1/4 p-4 transition rounded hover:bg-white hover:text-black">
         <a href={`https://youtu.be/${video.videoId}`} target="_blank">
           <div className="relative">
             <img
               src={`https://i.ytimg.com/vi/${video.videoId}/hq720.jpg`}
               alt=""
+              className="mb-2 rounded"
             />
             <div className="absolute right-1 bottom-1 text-sm bg-black text-white px-1 opacity-80 rounded">
               {video.actualStart ? moment(time).format("HH:mm:ss") : "UPCOMING"}
