@@ -17,7 +17,6 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
     }
     let interval = setInterval(() => {
       setTime((prevState) => new Date(prevState.getTime() + 1000));
-      console.log("interval called");
     }, 1000);
 
     return () => clearInterval(interval);

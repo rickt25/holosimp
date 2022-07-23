@@ -10,7 +10,6 @@ function App() {
     (async () => {
       const videos = await getLiveVideos();
       setVideos(videos);
-      console.log(videos.filter(x => x.status == "upcoming"));
     })();
   }, []);
 
