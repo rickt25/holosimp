@@ -1,6 +1,8 @@
 # Holosimp
 Simple project made with [@elvinvalentino](https://github.com/elvinvalentino) while sipping some tea 🧋.
 
+![](./public/app-preview.png)
+
 Website to see the currently streaming VTuber especially from Hololive.
 Built with React powered by Typescript. Also, backend data is pulled from https://holodex.net
 
