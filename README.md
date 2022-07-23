@@ -17,7 +17,7 @@ Styling : TailwindCSS
 - [x] Divide Live Videos and Upcoming videos
 - [ ] Add more informations to each cards
 - [ ] Group the livestreams by branch (JP | ID | EN)
-- [ ] Add Landing Page
+- [ ] Add Youtube embed to app
 
 # Installation
 1. Clone the project.
