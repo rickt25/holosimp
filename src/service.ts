@@ -1,8 +1,7 @@
 import { HolodexApiClient, VideoStatus } from 'holodex.js';
 
 const client = new HolodexApiClient({
-  // apiKey: import.meta.env.REACT_APP_API_KEY as string,
-  apiKey: "c114cf32-0b48-4f54-baf1-108d232276e3"
+  apiKey: import.meta.env.VITE_HOLODEX_API_KEY as string,
 });
 
 export const getLiveVideos = async () => {
