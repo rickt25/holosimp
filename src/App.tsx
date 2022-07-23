@@ -15,7 +15,7 @@ function App() {
 
   return (
     <main className="box-border bg-[#0d1524] p-10 text-gray-300 min-h-screen">
-      <div>
+      <div className="container m-auto">
         {videos.length > 0 && (
           <>
             <VideoWrapper title="Live Now" videos={videos.filter(x => x.status == "live")} />
