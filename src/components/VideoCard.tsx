@@ -3,11 +3,11 @@ import moment from "moment";
 import { Video } from "holodex.js";
 import { getTimeDifference } from "../utils";
 
-interface VideoProps {
+interface VideoCardProps {
   video: Video;
 }
 
-export const VideoCard: React.FC<VideoProps> = ({ video }) => {
+export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
   // const duration = moment.duration();
   const [time, setTime] = useState<Date>(getTimeDifference(video.actualStart));
 
@@ -32,11 +32,11 @@ export const VideoCard: React.FC<VideoProps> = ({ video }) => {
               src={`https://i.ytimg.com/vi/${video.videoId}/hq720.jpg`}
               alt=""
             />
-            <div className="absolute right-1 bottom-1 text-xs bg-white p-1">
-              {video.status === "upcoming" || !video.actualStart
-                ? "UPCOMING"
-                : moment(time).format("HH:mm:ss")}
-            </div>
+            {video.actualStart && (
+              <div className="absolute right-1 bottom-1 text-xs bg-white p-1">
+                {moment(time).format("HH:mm:ss")}
+              </div>
+            )}
           </div>
           <p>{video.title}</p>
         </a>

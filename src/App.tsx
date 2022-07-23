@@ -1,6 +1,6 @@
 import { Video } from "holodex.js";
 import { useEffect, useState } from "react";
-import { VideoCard } from "./components/VideoCard";
+import { VideoWrapper } from "./components/VideoWrapper";
 import { getLiveVideos } from "./service";
 
 function App() {
@@ -10,16 +10,15 @@ function App() {
     (async () => {
       const videos = await getLiveVideos();
       setVideos(videos);
-      console.log(videos);
+      console.log(videos.filter(x => x.status == "upcoming"));
     })();
   }, []);
 
   return (
     <main className="box-border">
-      <div className="flex flex-wrap p-10">
-        {videos.map((video) => (
-          <VideoCard key={video.videoId} video={video} />
-        ))}
+      <div className="p-10">
+        <VideoWrapper title="Live Now" videos={videos.filter(x => x.status == "live")} />
+        <VideoWrapper title="Upcoming" videos={videos.filter(x => x.status == "upcoming")} />
       </div>
     </main>
   );

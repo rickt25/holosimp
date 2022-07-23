@@ -1,4 +1,4 @@
-import { HolodexApiClient } from 'holodex.js';
+import { HolodexApiClient, VideoStatus } from 'holodex.js';
 
 const client = new HolodexApiClient({
   // apiKey: import.meta.env.REACT_APP_API_KEY as string,
@@ -7,10 +7,11 @@ const client = new HolodexApiClient({
 
 export const getLiveVideos = async () => {
   try{
-    const videos = await client.getLiveVideos({ org: 'Hololive' });
+    const videos = await client.getLiveVideos({ 
+      org: 'Hololive',
+    });
     return videos;
   }catch(err){
-    console.log("eRROR BANG");
     throw new Error(err as string);
   }
 }
