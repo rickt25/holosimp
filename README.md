@@ -8,10 +8,11 @@ Project demo : https://holosimp.vercel.app/
 Website to see the currently streaming VTuber especially from Hololive.
 Built with React powered by Typescript. Also, backend data is pulled from https://holodex.net
 
-# Tech
-Framework : ReactTS
-Tools : ViteJS
-Styling : TailwindCSS
+# Built With
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 # Upgrade Plans
 - [x] Divide Live Videos and Upcoming videos
