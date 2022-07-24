@@ -55,7 +55,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
             <img
               src={`https://i.ytimg.com/vi/${video.videoId}/mqdefault.jpg`}
               alt=""
-              className="mb-2 rounded"
+              className="mb-2 rounded w-full"
             />
             <div className="absolute right-1 bottom-1 text-sm bg-black text-white px-1 opacity-80 rounded">
               {VIDEO_STATUS}
