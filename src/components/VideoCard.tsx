@@ -52,13 +52,13 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
             <div className="w-5/6">
               <p className="line-clamp-2 font-semibold">{video.title}</p>
               <span className="block text-sm">{video.channel.englishName}</span>
-              {!IS_UPCOMING && (
-                <span className="block text-sm">
-                  {video.topic === 'membersonly' || video.liveViewers <= 0
+              <span className="block text-sm">
+                {!IS_UPCOMING
+                  ? video.topic === 'membersonly' || video.liveViewers <= 0
                     ? 'Members only stream'
-                    : `${formatNumber(video.liveViewers)} Watching`}
-                </span>
-              )}
+                    : `${formatNumber(video.liveViewers)} Watching`
+                  : `Starts ${moment(video.scheduledStart).fromNow()}`}
+              </span>
             </div>
           </div>
         </a>
