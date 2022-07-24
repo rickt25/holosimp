@@ -31,6 +31,22 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
       : 'WAITING';
   }, [time]);
 
+  const getCardDesc = () => {
+    if (IS_UPCOMING) return `Starts ${moment(video.scheduledStart).fromNow()}`;
+
+    if (
+      video.topic === 'membersonly' ||
+      (video.liveViewers <= 0 &&
+        video.duration <= 0 &&
+        VIDEO_STATUS !== 'WAITING')
+    )
+      return 'Members only stream';
+    if (VIDEO_STATUS === 'WAITING') return 'Waiting for stream to start';
+    if (video.liveViewers <= 0 && video.duration > 0) return 'Premiering';
+
+    return `${formatNumber(video.liveViewers)} Watching`;
+  };
+
   return (
     <>
       <div className="w-1/4 p-4 transition rounded hover:bg-white hover:text-black">
@@ -56,16 +72,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
             <div className="w-5/6">
               <p className="line-clamp-2 font-semibold">{video.title}</p>
               <span className="block text-sm">{video.channel.englishName}</span>
-              <span className="block text-sm">
-                {!IS_UPCOMING
-                  ? video.topic === 'membersonly' ||
-                    (video.liveViewers <= 0 && VIDEO_STATUS !== 'WAITING')
-                    ? 'Members only stream'
-                    : VIDEO_STATUS === 'WAITING'
-                    ? 'Waiting for stream to start'
-                    : `${formatNumber(video.liveViewers)} Watching`
-                  : `Starts ${moment(video.scheduledStart).fromNow()}`}
-              </span>
+              <span className="block text-sm">{getCardDesc()}</span>
             </div>
           </div>
         </a>
