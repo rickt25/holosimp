@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import { Video } from 'holodex.js';
 import { formatNumber, getTimeDifference } from '../utils';
@@ -23,6 +23,14 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const VIDEO_STATUS = useMemo(() => {
+    return video.actualStart
+      ? moment(time).format('HH:mm:ss')
+      : IS_UPCOMING
+      ? 'UPCOMING'
+      : 'WAITING';
+  }, [time]);
+
   return (
     <>
       <div className="w-1/4 p-4 transition rounded hover:bg-white hover:text-black">
@@ -34,11 +42,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
               className="mb-2 rounded"
             />
             <div className="absolute right-1 bottom-1 text-sm bg-black text-white px-1 opacity-80 rounded">
-              {video.actualStart
-                ? moment(time).format('HH:mm:ss')
-                : IS_UPCOMING
-                ? 'UPCOMING'
-                : 'WAITING'}
+              {VIDEO_STATUS}
             </div>
           </div>
           <div className="flex">
@@ -54,8 +58,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
               <span className="block text-sm">{video.channel.englishName}</span>
               <span className="block text-sm">
                 {!IS_UPCOMING
-                  ? video.topic === 'membersonly' || video.liveViewers <= 0
+                  ? video.topic === 'membersonly' ||
+                    (video.liveViewers <= 0 && VIDEO_STATUS !== 'WAITING')
                     ? 'Members only stream'
+                    : VIDEO_STATUS === 'WAITING'
+                    ? 'Waiting for stream to start'
                     : `${formatNumber(video.liveViewers)} Watching`
                   : `Starts ${moment(video.scheduledStart).fromNow()}`}
               </span>
